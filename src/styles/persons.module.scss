@@ -1,0 +1,33 @@
+.wrapper {}
+
+.title {
+    font-size: 110%;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.persons {
+    display: flex;
+    width: 185px;
+    margin: 0 auto;
+    margin-top: 10px;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+
+.checkbox {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.label {
+    color: #fff;
+}
+
+.icon {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 10px;
+}
