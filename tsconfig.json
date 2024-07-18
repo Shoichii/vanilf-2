@@ -26,5 +26,10 @@
     {
       "path": "./tsconfig.node.json"
     }
+  ],
+  "exclude": [
+    "node_modules",
+    "vite.config.ts",
+    "dist",
   ]
 }

@@ -1,5 +1,6 @@
 import axios, { type AxiosInstance } from "axios";
 import { URLs } from "./config";
+import Cookies from 'js-cookie';
 
 class SignUpAPI {
     instance: AxiosInstance;
@@ -9,7 +10,7 @@ class SignUpAPI {
             baseURL,
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRFToken": ''
+                "X-CSRFToken": Cookies.get('csrftoken')
             }
         })
 
@@ -18,13 +19,20 @@ class SignUpAPI {
 
     async getCSRFToken() {
         const response = await this.instance.get(URLs.csrfToken, { withCredentials: true })
-        this.instance.defaults.headers.common['X-CSRFToken'] = response.data.token
+        Cookies.set('csrftoken', response.data.token)
         return response.data.token
     }
 
     async getCategories(persons: Array<string>) {
         const response = await this.instance.post(URLs.filters.categories,
             JSON.stringify({ persons }),
+            { withCredentials: true })
+        return response.data
+    }
+
+    async getServices(persons: Array<string>, categories: Array<string>) {
+        const response = await this.instance.post(URLs.filters.services,
+            JSON.stringify({ persons, categories }),
             { withCredentials: true })
         return response.data
     }

@@ -1,0 +1,22 @@
+.wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.wrapper.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.title {
+    font-size: 110%;
+    margin: 0;
+    color: #fff;
+    text-align: left;
+}

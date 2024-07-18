@@ -3,20 +3,21 @@ import { persons } from "../app/consts";
 import Checkbox from "react-custom-checkbox";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import PersonsStyles from '../styles/persons.module.scss'
-import { setPersons, getCategoriesThunk, personsSelector } from "../app/slices.js/signUpSlice";
+import { setPersons, getCategoriesThunk, personsDataSelector } from "../app/slices.js/signUpSlice";
 import { useEffect } from "react";
 
 
 export const PersonsCheckboxes: React.FC = () => {
     const dispatch = useAppDispatch()
-    const statePersons = useAppSelector(personsSelector)
-    const selectedPersons = statePersons.filter(item => item.checked)
+    const statePersonsData = useAppSelector(personsDataSelector)
+    let isPersonsChecked = statePersonsData.filter(item => item.checked).length !== 0
 
     useEffect(() => {
-        if (selectedPersons.length !== 0) {
+        if (isPersonsChecked) {
             dispatch(getCategoriesThunk())
         }
-    }, [dispatch, statePersons, selectedPersons])
+
+    }, [dispatch, isPersonsChecked, statePersonsData])
 
     return (
         <div className={PersonsStyles.wrapper}>

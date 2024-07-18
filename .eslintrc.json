@@ -15,7 +15,9 @@
   ],
   "root": true,
   "ignorePatterns": [
-    "dist"
+    "dist",
+    ".eslintrc.cjs",
+    "vite.config.ts"
   ],
   "rules": {
     "@typescript-eslint/consistent-type-imports": [
@@ -58,8 +60,8 @@
     },
     {
       "files": [
-        "./gsap.min.js",
-        "./bg-script.js"
+        "./public/assets/gsap.min.js",
+        "./public/assets/bg-script.js"
       ],
       "rules": {
         "no-unused-vars": "off",
